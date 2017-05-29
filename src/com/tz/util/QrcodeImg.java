@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.UnsupportedEncodingException;
+
 
 import javax.imageio.ImageIO;
 
@@ -30,7 +30,7 @@ public class QrcodeImg {
 			//排错率
 			qrQrcode.setQrcodeErrorCorrect('M');
 			//版本
-			qrQrcode.setQrcodeVersion(15);
+			qrQrcode.setQrcodeVersion(10);
 			int width=235;
 			int height=235;
 			//画板
@@ -38,10 +38,11 @@ public class QrcodeImg {
 			//绘制工具
 			Graphics2D gs=image.createGraphics();
 			//开始绘制
-			//绘制矩形
-			gs.clearRect(0, 0, width, height);
 			//背景，内容颜色
 			gs.setBackground(Color.WHITE);
+			//绘制矩形
+			gs.clearRect(0, 0, width, height);
+			
 			gs.setColor(Color.BLACK);
 			//开始处理信息
 			byte[] codeOut;
@@ -53,6 +54,7 @@ public class QrcodeImg {
 					for(int j=0;j<code.length;j++){
 						if(code[j][i]){
 							//如果为真就涂黑
+							
 							gs.fillRect(j*3+2, i*3+2, 3,3);
 						}
 					}
@@ -65,8 +67,9 @@ public class QrcodeImg {
 				//施放资源
 				gs.dispose();
 				image.flush();
+				File file = new File(imgPath);
 				//保存到指定路径
-				ImageIO.write(image,"png",new File(imgPath));
+				ImageIO.write(image,"png",file);
 				System.out.println("二维码生成成功");
 				
 			} catch (Exception e) {
@@ -77,6 +80,6 @@ public class QrcodeImg {
 	}	
 	
 	public static void main(String[] args) {
-		getQrcodeImg("手机号13131313","D:/shouji.png");	
+		getQrcodeImg("手机号1313131312646121531654q62231 ada","D:/shouji.png");	
 	}
 }
