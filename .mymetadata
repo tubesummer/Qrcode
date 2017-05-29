@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="qrcode"
+  id="myeclipse.1496060841639"
+  context-root="/qrcode"
+  j2ee-spec="6.0"
+  archive="qrcode.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
